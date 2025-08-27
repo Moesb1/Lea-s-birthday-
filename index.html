@@ -1,37 +1,25 @@
 <!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bestie Portal — Gift 1/3</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Bestie Portal — Gift 1/3">
-<meta property="og:description" content="Unlock with a tiny secret ✨">
-<meta property="og:type" content="website">
-<meta property="og:image" content="certificate.jpg">
-</head>
-<body>
-<div class="stars"></div>
-<main class="wrap" style="min-height:70vh;display:grid;place-items:center;gap:16px;text-align:center">
-  <div class="pill">Gift <b>1</b> / 3</div>
-  <h1><span class="sticker purple">Lea</span> &nbsp; Bestie Portal <span class="spark">✨</span></h1>
-  <p class="lead">Tiny quiz before you enter. If you get it wrong, you owe me boba.</p>
-  <form id="gateForm" class="card" style="max-width:540px;width:100%;display:grid;gap:12px;padding:18px">
-    <label for="answer" style="font-weight:900;font-size:18px">Where did Seif take you on a date?</label>
-    <input id="answer" type="text" placeholder="Your answer" required
-      style="padding:14px 16px;border-radius:12px;border:2px dashed rgba(255,255,255,.3);background:rgba(0,0,0,.25);color:#fff">
-    <button class="btn primary" type="submit">Let’s go →</button>
-    <p id="err" style="color:#ff99a6;min-height:22px;margin:0"></p>
-    <p class="lead" style="margin:0;color:#f1d9ff;font-size:14px">Tip: two words.</p>
-  </form>
-</main>
-<footer class="wrap footer"><p style="font-family:Caveat, cursive;font-size:22px">Made with ❤️ by M</p></footer>
+<html><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lea's Birthday — Gift 1/3</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"></head>
+<body><div class="stars"></div>
+<main class="wrap" style="min-height:70vh;display:grid;place-items:center;text-align:center">
+<div class="pill">Gift 1 / 3</div>
+<h1>Lea's Birthday ✨</h1>
+<p class="lead">eza u dont get it right lea ha awis hale w ha tendame walla</p>
+<form id="gateForm" class="card" style="max-width:540px;width:100%;display:grid;gap:12px">
+<label style="font-weight:900;font-size:18px">Where did Seif take you on a date?</label>
+<input id="answer" type="text" placeholder="Your answer" required style="padding:14px 16px;border-radius:12px;border:2px dashed rgba(255,255,255,.3);background:rgba(0,0,0,.25);color:#fff">
+<button class="btn primary" type="submit">Let's go →</button>
+<p id="err" style="color:#ff99a6;min-height:22px;margin:0"></p>
+<p class="lead" style="margin:0;font-size:14px">Tip: two words.</p>
+</form></main>
 <script>
-const form=document.getElementById('gateForm'); const err=document.getElementById('err');
-function ok(txt){const n=(txt||'').trim().toLowerCase().replace(/\s+/g,' '); return n==='deek duke';}
-form.addEventListener('submit',e=>{e.preventDefault(); const v=document.getElementById('answer').value;
-  if(ok(v)){ localStorage.setItem('lea_g1_pass','1'); location.href='message.html'; }
-  else{ err.textContent='Wrong. Toe-tally not it. Try again 😅'; form.classList.remove('shake'); void form.offsetWidth; form.classList.add('shake'); }});
-</script>
-</body></html>
+const form=document.getElementById('gateForm'),err=document.getElementById('err');
+function ok(t){return (t||'').trim().toLowerCase().replace(/\s+/g,' ')==='deek duke'}
+form.addEventListener('submit',e=>{e.preventDefault();let v=document.getElementById('answer').value;
+ if(ok(v)){localStorage.setItem('lea_g1_pass','1');location.href='message.html'} 
+ else{err.textContent='Nope 😅';form.classList.remove('shake');void form.offsetWidth;form.classList.add('shake')}});
+</script></body></html>
