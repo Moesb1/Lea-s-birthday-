@@ -4,21 +4,86 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="robots" content="noindex" />
-  <title>Website is no longer available</title>
+  <title>Your Day</title>
   <style>
-    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#0f172a;color:#e2e8f0}
-    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
-    .card{max-width:640px;background:rgba(15,23,42,.6);border:1px solid rgba(148,163,184,.25);border-radius:16px;padding:28px;backdrop-filter:saturate(140%) blur(6px)}
-    h1{margin:0 0 8px;font-size:clamp(20px,3vw,28px)}
-    p{margin:0;font-size:clamp(16px,2.8vw,18px);color:#c084fc;} /* purple text */
+    :root { --bg:#0f172a; --fg:#e2e8f0; --muted:#94a3b8; --accent:#c084fc; }
+    * { box-sizing: border-box }
+    html,body { height:100%; margin:0; font-family: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; background:var(--bg); color:var(--fg); }
+    .wrap { min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px }
+    .card { width:100%; max-width:720px; text-align:center; padding:28px; border:1px solid rgba(148,163,184,.25); border-radius:16px; background:rgba(15,23,42,.55); backdrop-filter:saturate(140%) blur(6px) }
+    h1 { margin:0 0 10px; font-size:clamp(20px,3vw,28px); font-weight:600; }
+    h2 { margin:10px 0 18px; font-size:clamp(18px,2.6vw,22px); color:var(--accent); font-weight:600 }
+    .countdown { display:grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap:12px; margin:14px 0 6px }
+    .unit { padding:14px 10px; border:1px solid rgba(148,163,184,.25); border-radius:12px }
+    .num { display:block; font-size:clamp(26px,5.4vw,40px); line-height:1; font-variant-numeric: tabular-nums; }
+    .lab { display:block; margin-top:6px; font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em }
+    .note { margin-top:10px; font-size:12px; color:var(--muted) }
+    .heart { color: var(--accent); }
+    @media (max-width:420px){ .countdown{ grid-template-columns: repeat(2,1fr) } }
   </style>
 </head>
 <body>
   <div class="wrap">
     <div class="card">
-      <h1>website is no longer available</h1>
-      <p>im sorry lea, ily 💜</p>
+      <h1>i had to delete the site, but i’ll always care for you lea <span class="heart">💜</span></h1>
+      <h2>Your Day 🙏🙏🙏</h2>
+
+      <div class="countdown" aria-live="polite">
+        <div class="unit"><span id="d" class="num">0</span><span class="lab">days</span></div>
+        <div class="unit"><span id="h" class="num">00</span><span class="lab">hours</span></div>
+        <div class="unit"><span id="m" class="num">00</span><span class="lab">minutes</span></div>
+        <div class="unit"><span id="s" class="num">00</span><span class="lab">seconds</span></div>
+      </div>
+
+      <div class="note">Counting down to Dec 12 (Europe/Paris).</div>
     </div>
   </div>
+
+  <script>
+    // Decide which year to target based on current time in Paris
+    function getParisNow() {
+      return new Date(new Date().toLocaleString('en-US', { timeZone: 'Europe/Paris' }));
+    }
+    function nextTargetDate() {
+      const nowParis = getParisNow();
+      let year = nowParis.getFullYear();
+      // If it's after Dec 12 in Paris, count to next year
+      if (nowParis.getMonth() > 10 || (nowParis.getMonth() === 11 && nowParis.getDate() > 12)) year++;
+      // Midnight at start of Dec 12 in Paris (CET is UTC+01 in December)
+      return new Date(`${year}-12-12T00:00:00+01:00`);
+    }
+
+    const dEl = document.getElementById('d');
+    const hEl = document.getElementById('h');
+    const mEl = document.getElementById('m');
+    const sEl = document.getElementById('s');
+
+    let target = nextTargetDate();
+
+    function tick(){
+      const now = new Date();
+      let diff = target - now;
+
+      if (diff <= 0) {
+        // If we passed it, roll to next year’s Dec 12 in Paris
+        target = nextTargetDate();
+        diff = target - now;
+      }
+
+      const sec = Math.floor(diff / 1000);
+      const days = Math.floor(sec / 86400);
+      const hours = Math.floor((sec % 86400) / 3600);
+      const mins = Math.floor((sec % 3600) / 60);
+      const secs = sec % 60;
+
+      dEl.textContent = days;
+      hEl.textContent = String(hours).padStart(2,'0');
+      mEl.textContent = String(mins).padStart(2,'0');
+      sEl.textContent = String(secs).padStart(2,'0');
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  </script>
 </body>
 </html>
