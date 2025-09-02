@@ -1,25 +1,24 @@
 <!doctype html>
-<html><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Lea's Birthday — Gift 1/3</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css"></head>
-<body><div class="stars"></div>
-<main class="wrap" style="min-height:70vh;display:grid;place-items:center;text-align:center">
-<div class="pill">Gift 1 / 3</div>
-<h1>Lea's Birthday ✨</h1>
-<p class="lead">eza u dont get it right lea ha awis hale w ha tendame walla</p>
-<form id="gateForm" class="card" style="max-width:540px;width:100%;display:grid;gap:12px">
-<label style="font-weight:900;font-size:18px">Where did Seif take you on a date?</label>
-<input id="answer" type="text" placeholder="Your answer" required style="padding:14px 16px;border-radius:12px;border:2px dashed rgba(255,255,255,.3);background:rgba(0,0,0,.25);color:#fff">
-<button class="btn primary" type="submit">Let's go →</button>
-<p id="err" style="color:#ff99a6;min-height:22px;margin:0"></p>
-<p class="lead" style="margin:0;font-size:14px">Tip: two words.</p>
-</form></main>
-<script>
-const form=document.getElementById('gateForm'),err=document.getElementById('err');
-function ok(t){return (t||'').trim().toLowerCase().replace(/\s+/g,' ')==='deek duke'}
-form.addEventListener('submit',e=>{e.preventDefault();let v=document.getElementById('answer').value;
- if(ok(v)){localStorage.setItem('lea_g1_pass','1');location.href='message.html'} 
- else{err.textContent='Nope 😅';form.classList.remove('shake');void form.offsetWidth;form.classList.add('shake')}});
-</script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Website is no longer available</title>
+  <style>
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:#0f172a;color:#e2e8f0}
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center}
+    .card{max-width:640px;background:rgba(15,23,42,.6);border:1px solid rgba(148,163,184,.25);border-radius:16px;padding:28px;backdrop-filter:saturate(140%) blur(6px)}
+    h1{margin:0 0 8px;font-size:clamp(20px,3vw,28px)}
+    p{margin:0;font-size:clamp(16px,2.8vw,18px);color:#c084fc;} /* purple text */
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>website is no longer available</h1>
+      <p>im sorry lea, ily 💜</p>
+    </div>
+  </div>
+</body>
+</html>
